@@ -1,0 +1,18 @@
+import React from 'react';
+import { withRouter } from 'react-router-dom'; // using withRouter to avoid prop drilling
+import './menu-item.styles.scss'
+
+const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => ( // same as writing "props.title, props.imageUrl,..."
+    <div className={`${size} menu-item`} onClick={() => history.push(`${match.url}${linkUrl}`)}>
+        <div className='background-image' style={{
+        backgroundImage: `url(${imageUrl})` 
+        }}  ></div>
+        <div className='content'>
+            <h1 className='title'>{ title.toUpperCase() }</h1>
+            <span className='subtitle'>SHOP NOW</span>
+        </div>
+    </div>
+
+);
+
+export default withRouter(MenuItem); // returns MenuItem upgraded with history and router capabilities
